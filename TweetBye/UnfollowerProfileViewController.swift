@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import TwitterKit
+import SwiftyJSON
 
 class UnfollowerProfileViewController: UIViewController {
     
@@ -25,12 +26,6 @@ class UnfollowerProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
         if let URL = NSURL(string: user!.bannerImgUrl) {
             bannerImage.kf_setImageWithURL(URL, placeholderImage: UIImage(named: "placeholder")!)
-            
-            // add blur effect
-            //let darkBlur = UIBlurEffect(style: UIBlurEffectStyle.Light)
-            //let blurView = UIVisualEffectView(effect: darkBlur)
-            //blurView.frame = bannerImage.bounds
-            //bannerImage.addSubview(blurView)
         }
         
         if let URL = NSURL(string: user!.profileImgUrl) {
@@ -63,21 +58,18 @@ class UnfollowerProfileViewController: UIViewController {
     }
     
     @IBAction func blockUser(sender: UIButton) {
-        print("block @\(user!.screenName)")
+        self.blockOrUnfollowUser(true)
     }
     
     @IBAction func unfollowUser(sender: UIButton) {
-        print("unfollow @\(user!.screenName)")
+        self.blockOrUnfollowUser(false)
     }
     
     func sendTweet(nasty:Bool) {
         let composer = TWTRComposer()
         
-        if nasty {
-            composer.setText("@\(user!.screenName) hey you ulgy bastard! Why the fuck id u unfollowed me? ")
-        } else {
-            composer.setText("@\(user!.screenName) why did u unfollowed me!? :'(")
-        }
+        let text = (nasty) ? "hey you ulgy bastard! Why the fuck did u unfollowed me? " : "why did u unfollowed me!? :'("
+        composer.setText("@\(user!.screenName) \(text)")
         
         composer.showFromViewController(self) { result in
             if (result == TWTRComposerResult.Cancelled) {
@@ -90,39 +82,26 @@ class UnfollowerProfileViewController: UIViewController {
     }
     
     func blockOrUnfollowUser(block:Bool) {
-        var url = ""
+        /*
+        let url = (block) ? "https://api.twitter.com/1.1/blocks/create.json" : "https://api.twitter.com/1.1/friendships/destroy.json"
         
-        if block {
-            
-        } else {
-            url = "https://api.twitter.com/1.1/friendships/destroy.json?user_id=" + String(user!.id)
-        }
-    
         if let userID = Twitter.sharedInstance().sessionStore.session()!.userID {
             let client = TWTRAPIClient(userID: userID)
-            let request = NSURLRequest(URL: NSURL(string: "https://api.twitter.com/1.1/followers/ids.json")!)
+            let params = ["user_id": user!.id]
+            var clientError : NSError?
+            
+            let request = Twitter.sharedInstance().APIClient.URLRequestWithMethod("POST", URL: url, parameters: params, error: &clientError)
+             
             
             client.sendTwitterRequest(request) { (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
                 if error == nil {
-                    let json = JSON(data: data!)
-                    if let followerIdsArray = json["ids"].array {
-                        print("followers count -> \(followerIdsArray.count)")
-                        
-                        for var index = 0; index < followerIdsArray.count; index++ {
-                            let identifier = followerIdsArray[index]
-                            self.saveOrUpdateFollowerId(String(identifier), epoch: String(epoch))
-                        }
-                        
-                        self.getUnfollowers(String(epoch))
-                        
-                    } else {
-                        print("error fetching followers ids")
-                    }
-                    
+                    print("Unfollowed")
                 } else {
                     print("error -> \(error)")
                 }
             }
-        }
+        }*/
+        let text = (block) ? "blocking @\(user!.screenName)" : "unfollowing @\(user!.screenName)"
+        print(text)
     }
 }

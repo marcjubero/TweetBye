@@ -24,7 +24,6 @@
 		41B358051C68E56C0075B95B /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41B358011C68E56C0075B95B /* TwitterCore.framework */; };
 		41B358071C68EB480075B95B /* UnfollowersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B358061C68EB480075B95B /* UnfollowersTableViewController.swift */; };
 		41FF0C411C6BAAD7000E5F11 /* UnfollowerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FF0C401C6BAAD7000E5F11 /* UnfollowerProfileViewController.swift */; };
-		41FF0C441C6BEA6E000E5F11 /* TwitterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FF0C431C6BEA6E000E5F11 /* TwitterController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +45,6 @@
 		41B358011C68E56C0075B95B /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = SOURCE_ROOT; };
 		41B358061C68EB480075B95B /* UnfollowersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnfollowersTableViewController.swift; sourceTree = "<group>"; };
 		41FF0C401C6BAAD7000E5F11 /* UnfollowerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnfollowerProfileViewController.swift; sourceTree = "<group>"; };
-		41FF0C431C6BEA6E000E5F11 /* TwitterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterController.swift; sourceTree = "<group>"; };
 		725F247C61466FF259A31AAA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C7FC48A913A2FB60C72227E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CA7961B7EF4B0F26DEC4B34A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 		41B357E71C68E4A80075B95B /* TweetBye */ = {
 			isa = PBXGroup;
 			children = (
-				41FF0C421C6BEA4E000E5F11 /* Controllers */,
 				41B357E81C68E4A80075B95B /* AppDelegate.swift */,
 				41B357EA1C68E4A80075B95B /* ViewController.swift */,
 				41B357EC1C68E4A80075B95B /* Main.storyboard */,
@@ -108,14 +105,6 @@
 				4100EADA1C6A819F001BDF34 /* UserProfile.swift */,
 			);
 			path = TweetBye;
-			sourceTree = "<group>";
-		};
-		41FF0C421C6BEA4E000E5F11 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				41FF0C431C6BEA6E000E5F11 /* TwitterController.swift */,
-			);
-			name = Controllers;
 			sourceTree = "<group>";
 		};
 		51F574E4CFD9B7AA552B099E /* Pods */ = {
@@ -281,7 +270,6 @@
 				41B357E91C68E4A80075B95B /* AppDelegate.swift in Sources */,
 				41B358071C68EB480075B95B /* UnfollowersTableViewController.swift in Sources */,
 				41B357F11C68E4A80075B95B /* TweetBye.xcdatamodeld in Sources */,
-				41FF0C441C6BEA6E000E5F11 /* TwitterController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
